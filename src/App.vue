@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>
+      <router-link to="/login">Go to Home</router-link>
+      <router-link to="/normal">Go to About</router-link>
+    </p>
+    <div>
+
+    <router-view :dataList="data" class="view"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import loginComp from './components/login/login'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // eslint-disable-next-line vue/no-unused-components
+    loginComp,
+  },
+  data(){
+    return {
+      msg:'Hello World',
+      data:[
+        {'title':'title1','content':'content1'},
+        {'title':'title2','content':'content2'},
+        {'title':'title3','content':'content3'},
+      ]
+    }
   }
 }
 </script>
@@ -24,5 +41,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.view{
+  width: 100vw;
+  height: 80vh;
 }
 </style>
